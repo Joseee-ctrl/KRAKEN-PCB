@@ -1,0 +1,6 @@
+Change Component Footprint: Designator=BT1 Old Footprint=BORNERAS New Footprint=HDR1X2
+Change Component Footprint: Designator=BT2 Old Footprint=BORNERAS New Footprint=HDR1X2
+Change Component Footprint: Designator=Motor1 Old Footprint=BORNERAS New Footprint=HDR1X2
+Change Component Footprint: Designator=Motor2 Old Footprint=BORNERAS New Footprint=HDR1X2
+Change Component Footprint: Designator=C1 Old Footprint=CAPACITOR1000UF New Footprint=RB7.6-15
+Change Component Footprint: Designator=S1 Old Footprint=SWITCH New Footprint=SPST-2

@@ -1,0 +1,125 @@
+Removed Pin From Net: NetName=NetBT1_1 Pin=BT1-1
+Removed Pin From Net: NetName=NetBT1_2 Pin=BT1-2
+Removed Pin From Net: NetName=NetBT2_1 Pin=BT2-1
+Removed Pin From Net: NetName=NetBT1_1 Pin=BT2-2
+Removed Pin From Net: NetName=NetC1_1 Pin=C1-1
+Removed Pin From Net: NetName=NetC1_2 Pin=C1-2
+Removed Pin From Net: NetName=NetMotor1_1 Pin=Motor1-1
+Removed Pin From Net: NetName=NetMotor1_2 Pin=Motor1-2
+Removed Pin From Net: NetName=NetMotor2_1 Pin=Motor2-1
+Removed Pin From Net: NetName=NetMotor2_2 Pin=Motor2-2
+Removed Pin From Net: NetName=NetS1_1 Pin=S1-1
+Removed Pin From Net: NetName=NetS1_2 Pin=S1-2
+Removed Pin From Net: NetName=NetU1_3 Pin=U1-3
+Removed Pin From Net: NetName=NetU1_4 Pin=U1-4
+Removed Pin From Net: NetName=NetU1_7 Pin=U1-7
+Removed Pin From Net: NetName=NetU1_8 Pin=U1-8
+Removed Pin From Net: NetName=NetU1_15 Pin=U1-15
+Removed Pin From Net: NetName=NetU1_16 Pin=U1-16
+Removed Pin From Net: NetName=NetC1_1 Pin=U2-1
+Removed Pin From Net: NetName=NetC1_2 Pin=U2-3
+Removed Pin From Net: NetName=NetMotor2_1 Pin=U2-4
+Removed Pin From Net: NetName=NetMotor2_2 Pin=U2-5
+Removed Pin From Net: NetName=NetMotor1_1 Pin=U2-6
+Removed Pin From Net: NetName=NetMotor1_2 Pin=U2-7
+Removed Pin From Net: NetName=NetC1_2 Pin=U2-8
+Removed Pin From Net: NetName=NetC1_2 Pin=U2-9
+Removed Pin From Net: NetName=NetBT1_2 Pin=U3-1
+Removed Pin From Net: NetName=NetBT1_1 Pin=U3-2
+Removed Pin From Net: NetName=NetBT2_1 Pin=U3-3
+Removed Pin From Net: NetName=NetU3_4 Pin=U3-4
+Removed Pin From Net: NetName=NetS1_1 Pin=U3-5
+Removed Pin From Net: NetName=NetS1_1 Pin=U4-3
+Removed Pin From Net: NetName=NetU3_4 Pin=U4-4
+Removed Pin From Net: NetName=NetS1_2 Pin=U5-1
+Removed Pin From Net: NetName=NetU3_4 Pin=U5-3
+Added Component: Designator=BT1(BORNERAS)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=BT2(BORNERAS)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=C1(CAPACITOR1000UF)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Polarized Capacitor (Radial); 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RB7.6-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100pF"; VariantName = "[No Variations]"
+Added Component: Designator=Motor1(BORNERAS)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=Motor2(BORNERAS)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=S1(SWITCH)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Switch; 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "SPST-2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "24-Mar-1999"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=U1(ESP32C3SUPERMINI)
+Added Component: Designator=U2(TB6612FNG)
+Add component (AddParameter): Name = "Manufacturer"; Value = "Toshiba"; VariantName = "[No Variations]"
+Added Component: Designator=U3(BMS_2S_20A_HW391)
+Added Component: Designator=U4(CARGADOR_2S_USBC)
+Added Component: Designator=U5(XL4005_MODULE)
+Added Pin To Net: NetName=NetBT1_1 Pin=BT1-1
+Added Pin To Net: NetName=NetBT1_2 Pin=BT1-2
+Added Pin To Net: NetName=NetBT2_1 Pin=BT2-1
+Added Pin To Net: NetName=NetBT1_1 Pin=BT2-2
+Added Pin To Net: NetName=NetC1_1 Pin=C1-1
+Added Pin To Net: NetName=NetC1_2 Pin=C1-2
+Added Pin To Net: NetName=NetMotor1_1 Pin=Motor1-1
+Added Pin To Net: NetName=NetMotor1_2 Pin=Motor1-2
+Added Pin To Net: NetName=NetMotor2_1 Pin=Motor2-1
+Added Pin To Net: NetName=NetMotor2_2 Pin=Motor2-2
+Added Pin To Net: NetName=NetS1_1 Pin=S1-1
+Added Pin To Net: NetName=NetS1_2 Pin=S1-2
+Added Pin To Net: NetName=NetC1_1 Pin=U1-1
+Added Pin To Net: NetName=NetC1_2 Pin=U1-2
+Added Pin To Net: NetName=NetU1_3 Pin=U1-3
+Added Pin To Net: NetName=NetU1_4 Pin=U1-4
+Added Pin To Net: NetName=NetU1_4 Pin=U1-5
+Added Pin To Net: NetName=NetU1_7 Pin=U1-7
+Added Pin To Net: NetName=NetU1_8 Pin=U1-8
+Added Pin To Net: NetName=NetU1_15 Pin=U1-15
+Added Pin To Net: NetName=NetU1_16 Pin=U1-16
+Added Pin To Net: NetName=NetC1_1 Pin=U2-1
+Added Pin To Net: NetName=NetU1_3 Pin=U2-2
+Added Pin To Net: NetName=NetC1_2 Pin=U2-3
+Added Pin To Net: NetName=NetMotor2_1 Pin=U2-4
+Added Pin To Net: NetName=NetMotor2_2 Pin=U2-5
+Added Pin To Net: NetName=NetMotor1_1 Pin=U2-6
+Added Pin To Net: NetName=NetMotor1_2 Pin=U2-7
+Added Pin To Net: NetName=NetC1_2 Pin=U2-8
+Added Pin To Net: NetName=NetC1_2 Pin=U2-9
+Added Pin To Net: NetName=NetU1_15 Pin=U2-10
+Added Pin To Net: NetName=NetU1_16 Pin=U2-11
+Added Pin To Net: NetName=NetU1_4 Pin=U2-12
+Added Pin To Net: NetName=NetU1_3 Pin=U2-13
+Added Pin To Net: NetName=NetU1_8 Pin=U2-14
+Added Pin To Net: NetName=NetU1_7 Pin=U2-15
+Added Pin To Net: NetName=NetU1_4 Pin=U2-16
+Added Pin To Net: NetName=NetBT1_2 Pin=U3-1
+Added Pin To Net: NetName=NetBT1_1 Pin=U3-2
+Added Pin To Net: NetName=NetBT2_1 Pin=U3-3
+Added Pin To Net: NetName=NetU3_4 Pin=U3-4
+Added Pin To Net: NetName=NetS1_1 Pin=U3-5
+Added Pin To Net: NetName=NetS1_1 Pin=U4-3
+Added Pin To Net: NetName=NetU3_4 Pin=U4-4
+Added Pin To Net: NetName=NetS1_2 Pin=U5-1
+Added Pin To Net: NetName=NetC1_1 Pin=U5-2
+Added Pin To Net: NetName=NetU3_4 Pin=U5-3
+Added Pin To Net: NetName=NetC1_2 Pin=U5-4
+Added Member To Class: ClassName=MCU BLE Member=Component U1 ESP32-C3 SUPERMINI
+Added Member To Class: ClassName=Motor driver Member=Component U2 TB6612FNG devkit v1.0
+Added Member To Class: ClassName=Power Member=Component U3 BMS 2S 20A
+Added Member To Class: ClassName=Power Member=Component U4 CARGADOR 2S USB-C
+Added Member To Class: ClassName=Power Member=Component U5 v1

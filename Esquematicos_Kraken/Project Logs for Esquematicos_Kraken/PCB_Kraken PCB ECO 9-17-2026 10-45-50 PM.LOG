@@ -1,0 +1,15 @@
+Removed Member From Class: ClassName=Motor driver Member=C2
+Removed Member From Class: ClassName=Motor driver Member=C3
+Change Component Footprint: Designator=S1 Old Footprint=SPST-2 New Footprint=SWITCH
+Added Pin To Net: NetName=NetMotor1_1 Pin=Motor1-1
+Added Pin To Net: NetName=NetMotor1_1 Pin=U2-6
+Added Net: Name=NetMotor1_1
+Added Pin To Net: NetName=NetMotor1_2 Pin=Motor1-2
+Added Pin To Net: NetName=NetMotor1_2 Pin=U2-7
+Added Net: Name=NetMotor1_2
+Added Pin To Net: NetName=NetMotor2_1 Pin=Motor2-1
+Added Pin To Net: NetName=NetMotor2_1 Pin=U2-4
+Added Net: Name=NetMotor2_1
+Added Pin To Net: NetName=NetMotor2_2 Pin=Motor2-2
+Added Pin To Net: NetName=NetMotor2_2 Pin=U2-5
+Added Net: Name=NetMotor2_2

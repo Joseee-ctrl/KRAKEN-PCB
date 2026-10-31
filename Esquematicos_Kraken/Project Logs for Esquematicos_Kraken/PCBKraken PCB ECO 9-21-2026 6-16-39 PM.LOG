@@ -1,0 +1,2 @@
+Change Component Footprint: Designator=S1 Old Footprint=SWITCH New Footprint=BORNERAS
+Added Member To Class: ClassName=MCU BLE Member=Component U1 ESP32-C3 SUPERMINI

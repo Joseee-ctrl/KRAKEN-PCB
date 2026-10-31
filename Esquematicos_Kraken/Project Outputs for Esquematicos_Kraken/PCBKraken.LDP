@@ -1,0 +1,3 @@
+Layer Pairs Export File for PCB: C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCBKraken.PcbDoc
+LayersSetName=Top_Bot_Plated_Thru_Holes|DrillFile=pcbkraken-plated.txt|DrillLayers=gtl,gbl
+LayersSetName=Top_Bot_NonPlated_Thru_Holes|DrillFile=pcbkraken-nonplated.txt|DrillLayers=gtl,gbl

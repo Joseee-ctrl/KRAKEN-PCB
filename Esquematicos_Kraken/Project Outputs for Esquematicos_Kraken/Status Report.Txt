@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Esquematicos_Kraken.PrjPcb]
+   Generated File[PCBKraken-Plated.TXT]
+   Generated File[PCBKraken-NonPlated.TXT]
+   Generated File[PCBKraken.LDP]
+   Generated File[PCBKraken.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 7:21:51 PM On 9/26/2026

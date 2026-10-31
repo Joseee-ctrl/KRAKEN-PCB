@@ -1,0 +1,556 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD26\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">9/18/2026</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">12:11:15 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc" class="file"><acronym title="C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc">C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">72</td></tr>
+</table>
+</td>
+</table><a name="IDIAL4NIWTDJOJFOCHFLPS0SRFUEEX3QQCTYOA35DN43MHATPC4KNJ"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMDF0WEC51GB1GKHR4CRXOQXFAGCMPYE5VINM1ZEWYWR5ZJGVI32J">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZ2RXUNHAGZNFPGBEXLQNRODEDIIDFACYF4QJODNS43HGFW04LCAM">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHG3UWYHRLT0XBPUBQVXRVGLYDBX5QSVPATGMTWKT3KRAAZWL01BN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">30</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJ0JFGV3V35E5JSFXN5MCKAL5NEEUGPCC0ADLVCCWP54J5QYJY2OG">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID42YU1O1GF41SFA22PSWEBHFB2KGMSW1E2PXFX1EINAFISQKR2TZE">Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID5KYDL3RB1F3CBJHMAXGTH44HEOUYR3ZPSZOGEMK222NZYYYZ43VF">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMLR24XKHJZL1H5TYBZW5NQTXXT3HRIWMO34SGMZLFURP3E0RJZL">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMKTCHVSE1C2QJP0DNTZXNJXFXNAGOUGJDDOKVEIFLW0QFEQADLNK">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSFFOMUURVKE5KVV0S1KBFCBS0I1UINXTDUHDKOBDHC5LBC5CXFBC">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFQNQVT5W1NMWLFPRQJIUKSHLFGGEJIFSC5NZBCLSJ1XBUWI22EMO">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDALFUTYCCZSP2KVSADC4ELAJQSGL1HAFVLGKWH4KSFVAT5RG4ILI">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">40</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRDKTKZGYP02RJYKA3AC1A2B2XB3PKKOYUUYBWMP2ACVBYXLWACUD">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOHLJF4BBSZTSNEY1C2YSMJCADDIVDGRB2RZPXIMWQNLJYVEBS3OB">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBIW0Q0WVPTZZIUHQI1TMT5X42CQJHOYRGNI24PHC4UUWUXG4SR4N">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">72</td>
+</tr>
+</table><br><a name="IDHG3UWYHRLT0XBPUBQVXRVGLYDBX5QSVPATGMTWKT3KRAAZWL01BN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10747.835mil|Location2.X=11225.945mil|Location1.Y=3119.055mil|Location2.Y=3434.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10747.835mil|Location2.X=11225.945mil|Location1.Y=3119.055mil|Location2.Y=3434.016mil|Absolute=True">Un-Routed Net Constraint: Net NetBT1_1 Between Pad BT2-2(274.495mm,85.724mm) on Multi-Layer And Pad BT1-1(283.639mm,80.724mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10892.638mil|Location2.X=11225.945mil|Location1.Y=569.724mil|Location2.Y=3434.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10892.638mil|Location2.X=11225.945mil|Location1.Y=569.724mil|Location2.Y=3434.016mil|Absolute=True">Un-Routed Net Constraint: Net NetBT1_2 Between Pad U3-1(277.923mm,15.721mm) on Multi-Layer And Pad BT1-2(283.639mm,85.724mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10302.087mil|Location2.X=10865.945mil|Location1.Y=569.724mil|Location2.Y=3237.165mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10302.087mil|Location2.X=10865.945mil|Location1.Y=569.724mil|Location2.Y=3237.165mil|Absolute=True">Un-Routed Net Constraint: Net NetBT2_1 Between Pad U3-3(262.923mm,15.721mm) on Multi-Layer And Pad BT2-1(274.495mm,80.724mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10597.362mil|Location2.X=10865.945mil|Location1.Y=2282.323mil|Location2.Y=3434.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10597.362mil|Location2.X=10865.945mil|Location1.Y=2282.323mil|Location2.Y=3434.016mil|Absolute=True">Un-Routed Net Constraint: Net NetBT1_1 Between Pad U3-2(270.423mm,59.221mm) on Multi-Layer And Pad BT2-2(274.495mm,85.724mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8722.598mil|Location2.X=9645.157mil|Location1.Y=1649.842mil|Location2.Y=2379.055mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8722.598mil|Location2.X=9645.157mil|Location1.Y=1649.842mil|Location2.Y=2379.055mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_1 Between Pad U5-2(223.054mm,58.928mm) on Multi-Layer And Pad C1-1(243.967mm,42.926mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7774.842mil|Location2.X=9763.268mil|Location1.Y=1649.842mil|Location2.Y=1784.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7774.842mil|Location2.X=9763.268mil|Location1.Y=1649.842mil|Location2.Y=1784.134mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_2 Between Pad U2-9(198.501mm,44.297mm) on Multi-Layer And Pad C1-2(246.967mm,42.926mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9450.945mil|Location2.X=9763.268mil|Location1.Y=1649.842mil|Location2.Y=3993.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9450.945mil|Location2.X=9763.268mil|Location1.Y=1649.842mil|Location2.Y=3993.228mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_2 Between Pad U5-4(241.554mm,99.928mm) on Multi-Layer And Pad C1-2(246.967mm,42.926mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7177.835mil|Location2.X=7655.158mil|Location1.Y=1014.842mil|Location2.Y=2287.165mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7177.835mil|Location2.X=7655.158mil|Location1.Y=1014.842mil|Location2.Y=2287.165mil|Absolute=True">Un-Routed Net Constraint: Net NetMotor1_1 Between Pad Motor1-1(183.817mm,56.594mm) on Multi-Layer And Pad U2-6(193.421mm,26.797mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7177.835mil|Location2.X=7755.158mil|Location1.Y=1014.842mil|Location2.Y=2484.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7177.835mil|Location2.X=7755.158mil|Location1.Y=1014.842mil|Location2.Y=2484.016mil|Absolute=True">Un-Routed Net Constraint: Net NetMotor1_2 Between Pad Motor1-2(183.817mm,61.594mm) on Multi-Layer And Pad U2-7(195.961mm,26.797mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7374.842mil|Location2.X=7675.945mil|Location1.Y=1014.842mil|Location2.Y=2287.165mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7374.842mil|Location2.X=7675.945mil|Location1.Y=1014.842mil|Location2.Y=2287.165mil|Absolute=True">Un-Routed Net Constraint: Net NetMotor2_1 Between Pad U2-4(188.341mm,26.797mm) on Multi-Layer And Pad Motor2-1(193.469mm,56.594mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7474.842mil|Location2.X=7675.945mil|Location1.Y=1014.842mil|Location2.Y=2484.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7474.842mil|Location2.X=7675.945mil|Location1.Y=1014.842mil|Location2.Y=2484.016mil|Absolute=True">Un-Routed Net Constraint: Net NetMotor2_2 Between Pad U2-5(190.881mm,26.797mm) on Multi-Layer And Pad Motor2-2(193.469mm,61.594mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7915mil|Location2.X=10597.362mil|Location1.Y=2065.787mil|Location2.Y=3604.931mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7915mil|Location2.X=10597.362mil|Location1.Y=2065.787mil|Location2.Y=3604.931mil|Absolute=True">Un-Routed Net Constraint: Net NetS1_1 Between Pad S1-1(206.241mm,90.065mm) on Multi-Layer And Pad U3-5(267.923mm,53.721mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7915mil|Location2.X=9569.055mil|Location1.Y=2260.945mil|Location2.Y=3880.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7915mil|Location2.X=9569.055mil|Location1.Y=2260.945mil|Location2.Y=3880.522mil|Absolute=True">Un-Routed Net Constraint: Net NetS1_2 Between Pad S1-2(206.241mm,97.065mm) on Multi-Layer And Pad U5-1(241.554mm,58.928mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7155.158mil|Location1.Y=304.842mil|Location2.Y=1095.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7155.158mil|Location1.Y=304.842mil|Location2.Y=1095.158mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_1 Between Pad U1-1(168.275mm,8.763mm) on Multi-Layer And Pad U2-1(180.721mm,26.797mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5985.236mil|Location2.X=7755.158mil|Location1.Y=404.842mil|Location2.Y=1784.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5985.236mil|Location2.X=7755.158mil|Location1.Y=404.842mil|Location2.Y=1784.134mil|Absolute=True">Un-Routed Net Constraint: Net NetU1_15 Between Pad U1-15(153.045mm,11.303mm) on Multi-Layer And Pad U2-10(195.961mm,44.297mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5985.236mil|Location2.X=7655.158mil|Location1.Y=304.842mil|Location2.Y=1784.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5985.236mil|Location2.X=7655.158mil|Location1.Y=304.842mil|Location2.Y=1784.134mil|Absolute=True">Un-Routed Net Constraint: Net NetU1_16 Between Pad U1-16(153.045mm,8.763mm) on Multi-Layer And Pad U2-11(193.421mm,44.297mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7355.158mil|Location1.Y=404.842mil|Location2.Y=1095.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7355.158mil|Location1.Y=404.842mil|Location2.Y=1095.158mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_2 Between Pad U1-2(168.275mm,11.303mm) on Multi-Layer And Pad U2-3(185.801mm,26.797mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7255.158mil|Location1.Y=504.842mil|Location2.Y=1095.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7255.158mil|Location1.Y=504.842mil|Location2.Y=1095.158mil|Absolute=True">Un-Routed Net Constraint: Net NetU1_3 Between Pad U1-3(168.275mm,13.843mm) on Multi-Layer And Pad U2-2(183.261mm,26.797mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=6665.158mil|Location1.Y=604.842mil|Location2.Y=785.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=6665.158mil|Location1.Y=604.842mil|Location2.Y=785.158mil|Absolute=True">Un-Routed Net Constraint: Net NetU1_4 Between Pad U1-4(168.275mm,16.383mm) on Multi-Layer And Pad U1-5(168.275mm,18.923mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7155.158mil|Location1.Y=704.842mil|Location2.Y=1784.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7155.158mil|Location1.Y=704.842mil|Location2.Y=1784.134mil|Absolute=True">Un-Routed Net Constraint: Net NetU1_4 Between Pad U1-5(168.275mm,18.923mm) on Multi-Layer And Pad U2-16(180.721mm,44.297mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7255.158mil|Location1.Y=904.842mil|Location2.Y=1784.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7255.158mil|Location1.Y=904.842mil|Location2.Y=1784.134mil|Absolute=True">Un-Routed Net Constraint: Net NetU1_7 Between Pad U1-7(168.275mm,24.003mm) on Multi-Layer And Pad U2-15(183.261mm,44.297mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7355.158mil|Location1.Y=1004.842mil|Location2.Y=1784.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6584.842mil|Location2.X=7355.158mil|Location1.Y=1004.842mil|Location2.Y=1784.134mil|Absolute=True">Un-Routed Net Constraint: Net NetU1_8 Between Pad U1-8(168.275mm,26.543mm) on Multi-Layer And Pad U2-14(185.801mm,44.297mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7074.842mil|Location2.X=8840.709mil|Location1.Y=1014.842mil|Location2.Y=2379.055mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7074.842mil|Location2.X=8840.709mil|Location1.Y=1014.842mil|Location2.Y=2379.055mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_1 Between Pad U2-1(180.721mm,26.797mm) on Multi-Layer And Pad U5-2(223.054mm,58.928mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7074.842mil|Location2.X=7555.158mil|Location1.Y=1703.819mil|Location2.Y=1784.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7074.842mil|Location2.X=7555.158mil|Location1.Y=1703.819mil|Location2.Y=1784.134mil|Absolute=True">Un-Routed Net Constraint: Net NetU1_4 Between Pad U2-16(180.721mm,44.297mm) on Multi-Layer And Pad U2-12(190.881mm,44.297mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7174.842mil|Location2.X=7455.158mil|Location1.Y=1014.842mil|Location2.Y=1784.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7174.842mil|Location2.X=7455.158mil|Location1.Y=1014.842mil|Location2.Y=1784.134mil|Absolute=True">Un-Routed Net Constraint: Net NetU1_3 Between Pad U2-2(183.261mm,26.797mm) on Multi-Layer And Pad U2-13(188.341mm,44.297mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7274.842mil|Location2.X=7855.158mil|Location1.Y=1014.842mil|Location2.Y=1095.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7274.842mil|Location2.X=7855.158mil|Location1.Y=1014.842mil|Location2.Y=1095.158mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_2 Between Pad U2-3(185.801mm,26.797mm) on Multi-Layer And Pad U2-8(198.501mm,26.797mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7774.842mil|Location2.X=7855.158mil|Location1.Y=1014.842mil|Location2.Y=1784.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7774.842mil|Location2.X=7855.158mil|Location1.Y=1014.842mil|Location2.Y=1784.134mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_2 Between Pad U2-8(198.501mm,26.797mm) on Multi-Layer And Pad U2-9(198.501mm,44.297mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9126.26mil|Location2.X=10794.213mil|Location1.Y=24.685mil|Location2.Y=2164.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9126.26mil|Location2.X=10794.213mil|Location1.Y=24.685mil|Location2.Y=2164.213mil|Absolute=True">Un-Routed Net Constraint: Net NetU3_4 Between Pad U4-4(233.807mm,2.127mm) on Multi-Layer And Pad U3-4(272.923mm,53.721mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8722.598mil|Location2.X=10794.213mil|Location1.Y=2065.787mil|Location2.Y=3993.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8722.598mil|Location2.X=10794.213mil|Location1.Y=2065.787mil|Location2.Y=3993.228mil|Absolute=True">Un-Routed Net Constraint: Net NetU3_4 Between Pad U5-3(223.054mm,99.928mm) on Multi-Layer And Pad U3-4(272.923mm,53.721mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8929.409mil|Location2.X=10597.362mil|Location1.Y=24.685mil|Location2.Y=2164.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8929.409mil|Location2.X=10597.362mil|Location1.Y=24.685mil|Location2.Y=2164.213mil|Absolute=True">Un-Routed Net Constraint: Net NetS1_1 Between Pad U4-3(228.807mm,2.127mm) on Multi-Layer And Pad U3-5(267.923mm,53.721mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDMKTCHVSE1C2QJP0DNTZXNJXFXNAGOUGJDDOKVEIFLW0QFEQADLNK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8016.737mil|Location2.X=8222.712mil|Location1.Y=3442.889mil|Location2.Y=3648.863mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8016.737mil|Location2.X=8222.712mil|Location1.Y=3442.889mil|Location2.Y=3648.863mil|Absolute=True">Hole Size Constraint: (5.2mm &gt; 2.54mm) Pad S1-1(206.241mm,90.065mm) on Multi-Layer Actual Slot Hole Width = 5.2mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8016.737mil|Location2.X=8222.712mil|Location1.Y=3718.48mil|Location2.Y=3924.454mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8016.737mil|Location2.X=8222.712mil|Location1.Y=3718.48mil|Location2.Y=3924.454mil|Absolute=True">Hole Size Constraint: (5.2mm &gt; 2.54mm) Pad S1-2(206.241mm,97.065mm) on Multi-Layer Actual Slot Hole Width = 5.2mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDALFUTYCCZSP2KVSADC4ELAJQSGL1HAFVLGKWH4KSFVAT5RG4ILI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=339.375mil|Location2.Y=350.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=339.375mil|Location2.Y=350.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U1-1(168.275mm,8.763mm) on Multi-Layer And Track (169.545mm,5.588mm)(169.545mm,29.588mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=439.375mil|Location2.Y=450.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=439.375mil|Location2.Y=450.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U1-2(168.275mm,11.303mm) on Multi-Layer And Track (169.545mm,5.588mm)(169.545mm,29.588mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=539.375mil|Location2.Y=550.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=539.375mil|Location2.Y=550.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U1-3(168.275mm,13.843mm) on Multi-Layer And Track (169.545mm,5.588mm)(169.545mm,29.588mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=639.375mil|Location2.Y=650.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=639.375mil|Location2.Y=650.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U1-4(168.275mm,16.383mm) on Multi-Layer And Track (169.545mm,5.588mm)(169.545mm,29.588mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=739.375mil|Location2.Y=750.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=739.375mil|Location2.Y=750.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U1-5(168.275mm,18.923mm) on Multi-Layer And Track (169.545mm,5.588mm)(169.545mm,29.588mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=839.375mil|Location2.Y=850.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=839.375mil|Location2.Y=850.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U1-6(168.275mm,21.463mm) on Multi-Layer And Track (169.545mm,5.588mm)(169.545mm,29.588mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=939.375mil|Location2.Y=950.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=939.375mil|Location2.Y=950.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U1-7(168.275mm,24.003mm) on Multi-Layer And Track (169.545mm,5.588mm)(169.545mm,29.588mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=1039.375mil|Location2.Y=1050.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6661.963mil|Location2.X=6673.213mil|Location1.Y=1039.375mil|Location2.Y=1050.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U1-8(168.275mm,26.543mm) on Multi-Layer And Track (169.545mm,5.588mm)(169.545mm,29.588mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7064.287mil|Location2.X=7075.537mil|Location1.Y=1049.375mil|Location2.Y=1060.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7064.287mil|Location2.X=7075.537mil|Location1.Y=1049.375mil|Location2.Y=1060.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad U2-1(180.721mm,26.797mm) on Multi-Layer And Track (179.324mm,25.527mm)(179.324mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7109.375mil|Location2.X=7120.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7109.375mil|Location2.X=7120.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-1(180.721mm,26.797mm) on Multi-Layer And Track (179.324mm,25.527mm)(199.771mm,25.527mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7709.375mil|Location2.X=7720.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7709.375mil|Location2.X=7720.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Pad U2-10(195.961mm,44.297mm) on Multi-Layer And Track (179.324mm,45.593mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7609.375mil|Location2.X=7620.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7609.375mil|Location2.X=7620.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Pad U2-11(193.421mm,44.297mm) on Multi-Layer And Track (179.324mm,45.593mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7509.375mil|Location2.X=7520.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7509.375mil|Location2.X=7520.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Pad U2-12(190.881mm,44.297mm) on Multi-Layer And Track (179.324mm,45.593mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7409.375mil|Location2.X=7420.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7409.375mil|Location2.X=7420.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Pad U2-13(188.341mm,44.297mm) on Multi-Layer And Track (179.324mm,45.593mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7309.375mil|Location2.X=7320.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7309.375mil|Location2.X=7320.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Pad U2-14(185.801mm,44.297mm) on Multi-Layer And Track (179.324mm,45.593mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7209.375mil|Location2.X=7220.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7209.375mil|Location2.X=7220.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Pad U2-15(183.261mm,44.297mm) on Multi-Layer And Track (179.324mm,45.593mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7064.287mil|Location2.X=7075.537mil|Location1.Y=1738.351mil|Location2.Y=1749.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7064.287mil|Location2.X=7075.537mil|Location1.Y=1738.351mil|Location2.Y=1749.601mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad U2-16(180.721mm,44.297mm) on Multi-Layer And Track (179.324mm,25.527mm)(179.324mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7109.375mil|Location2.X=7120.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7109.375mil|Location2.X=7120.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Pad U2-16(180.721mm,44.297mm) on Multi-Layer And Track (179.324mm,45.593mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7209.375mil|Location2.X=7220.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7209.375mil|Location2.X=7220.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-2(183.261mm,26.797mm) on Multi-Layer And Track (179.324mm,25.527mm)(199.771mm,25.527mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7309.375mil|Location2.X=7320.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7309.375mil|Location2.X=7320.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-3(185.801mm,26.797mm) on Multi-Layer And Track (179.324mm,25.527mm)(199.771mm,25.527mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7409.375mil|Location2.X=7420.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7409.375mil|Location2.X=7420.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-4(188.341mm,26.797mm) on Multi-Layer And Track (179.324mm,25.527mm)(199.771mm,25.527mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7509.375mil|Location2.X=7520.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7509.375mil|Location2.X=7520.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-5(190.881mm,26.797mm) on Multi-Layer And Track (179.324mm,25.527mm)(199.771mm,25.527mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7609.375mil|Location2.X=7620.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7609.375mil|Location2.X=7620.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-6(193.421mm,26.797mm) on Multi-Layer And Track (179.324mm,25.527mm)(199.771mm,25.527mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7709.375mil|Location2.X=7720.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7709.375mil|Location2.X=7720.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-7(195.961mm,26.797mm) on Multi-Layer And Track (179.324mm,25.527mm)(199.771mm,25.527mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7809.375mil|Location2.X=7820.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7809.375mil|Location2.X=7820.625mil|Location1.Y=1006.787mil|Location2.Y=1018.037mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-8(198.501mm,26.797mm) on Multi-Layer And Track (179.324mm,25.527mm)(199.771mm,25.527mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7851.963mil|Location2.X=7863.213mil|Location1.Y=1049.375mil|Location2.Y=1060.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7851.963mil|Location2.X=7863.213mil|Location1.Y=1049.375mil|Location2.Y=1060.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-8(198.501mm,26.797mm) on Multi-Layer And Track (199.771mm,25.527mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7809.375mil|Location2.X=7820.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7809.375mil|Location2.X=7820.625mil|Location1.Y=1781.451mil|Location2.Y=1792.701mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Pad U2-9(198.501mm,44.297mm) on Multi-Layer And Track (179.324mm,45.593mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7851.963mil|Location2.X=7863.213mil|Location1.Y=1738.351mil|Location2.Y=1749.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7851.963mil|Location2.X=7863.213mil|Location1.Y=1738.351mil|Location2.Y=1749.601mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.254mm) Between Pad U2-9(198.501mm,44.297mm) on Multi-Layer And Track (199.771mm,25.527mm)(199.771mm,45.593mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9338.017mil|Location2.X=9345.684mil|Location1.Y=1457.86mil|Location2.Y=1465.526mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9338.017mil|Location2.X=9345.684mil|Location1.Y=1457.86mil|Location2.Y=1465.526mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U4-1(238.783mm,35.56mm) on Top Layer And Track (222.307mm,37.127mm)(240.307mm,37.127mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9457.072mil|Location2.X=9464.739mil|Location1.Y=1337.112mil|Location2.Y=1344.778mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9457.072mil|Location2.X=9464.739mil|Location1.Y=1337.112mil|Location2.Y=1344.778mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U4-1(238.783mm,35.56mm) on Top Layer And Track (240.307mm,0.127mm)(240.307mm,37.127mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8748.411mil|Location2.X=8756.077mil|Location1.Y=1337.112mil|Location2.Y=1344.778mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8748.411mil|Location2.X=8756.077mil|Location1.Y=1337.112mil|Location2.Y=1344.778mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U4-2(223.797mm,35.56mm) on Top Layer And Track (222.307mm,0.127mm)(222.307mm,37.127mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8748.411mil|Location2.X=8756.077mil|Location1.Y=1457.86mil|Location2.Y=1465.526mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8748.411mil|Location2.X=8756.077mil|Location1.Y=1457.86mil|Location2.Y=1465.526mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U4-2(223.797mm,35.56mm) on Top Layer And Track (222.307mm,37.127mm)(240.307mm,37.127mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9447.112mil|Location2.X=9454.778mil|Location1.Y=2257.112mil|Location2.Y=2264.778mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9447.112mil|Location2.X=9454.778mil|Location1.Y=2257.112mil|Location2.Y=2264.778mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U5-1(241.554mm,58.928mm) on Multi-Layer And Track (221.454mm,57.428mm)(243.054mm,57.428mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9565.222mil|Location2.X=9572.888mil|Location1.Y=2257.112mil|Location2.Y=2264.778mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9565.222mil|Location2.X=9572.888mil|Location1.Y=2257.112mil|Location2.Y=2264.778mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U5-1(241.554mm,58.928mm) on Multi-Layer And Track (243.054mm,57.428mm)(243.054mm,101.428mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8714.828mil|Location2.X=8722.495mil|Location1.Y=2375.222mil|Location2.Y=2382.888mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8714.828mil|Location2.X=8722.495mil|Location1.Y=2375.222mil|Location2.Y=2382.888mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U5-2(223.054mm,58.928mm) on Multi-Layer And Track (221.454mm,57.428mm)(221.454mm,101.428mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8718.765mil|Location2.X=8726.432mil|Location1.Y=2257.112mil|Location2.Y=2264.778mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8718.765mil|Location2.X=8726.432mil|Location1.Y=2257.112mil|Location2.Y=2264.778mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U5-2(223.054mm,58.928mm) on Multi-Layer And Track (221.454mm,57.428mm)(243.054mm,57.428mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8718.765mil|Location2.X=8726.432mil|Location1.Y=3989.395mil|Location2.Y=3997.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8718.765mil|Location2.X=8726.432mil|Location1.Y=3989.395mil|Location2.Y=3997.062mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U5-3(223.054mm,99.928mm) on Multi-Layer And Track (221.454mm,101.428mm)(243.054mm,101.428mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8714.828mil|Location2.X=8722.495mil|Location1.Y=3871.285mil|Location2.Y=3878.951mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8714.828mil|Location2.X=8722.495mil|Location1.Y=3871.285mil|Location2.Y=3878.951mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U5-3(223.054mm,99.928mm) on Multi-Layer And Track (221.454mm,57.428mm)(221.454mm,101.428mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9447.112mil|Location2.X=9454.778mil|Location1.Y=3989.395mil|Location2.Y=3997.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9447.112mil|Location2.X=9454.778mil|Location1.Y=3989.395mil|Location2.Y=3997.062mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U5-4(241.554mm,99.928mm) on Multi-Layer And Track (221.454mm,101.428mm)(243.054mm,101.428mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9565.222mil|Location2.X=9572.888mil|Location1.Y=3871.285mil|Location2.Y=3878.951mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\josem\Documents\SEMESTRE 6\PCB\Esquematicos_Kraken\Esquematicos_Kraken\PCB_Kraken.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9565.222mil|Location2.X=9572.888mil|Location1.Y=3871.285mil|Location2.Y=3878.951mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U5-4(241.554mm,99.928mm) on Multi-Layer And Track (243.054mm,57.428mm)(243.054mm,101.428mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

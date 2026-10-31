@@ -1,0 +1,11 @@
+Change Physical Footprint: Designator=BT1 Old Footprint=BORNERAS New Footprint=BORNERAS
+Change Physical Footprint: Designator=BT2 Old Footprint=BORNERAS New Footprint=BORNERAS
+Change Physical Footprint: Designator=C1 Old Footprint=CAPACITOR1000UF New Footprint=CAPACITOR1000UF
+Change Physical Footprint: Designator=Motor1 Old Footprint=BORNERAS New Footprint=BORNERAS
+Change Physical Footprint: Designator=Motor2 Old Footprint=BORNERAS New Footprint=BORNERAS
+Change Physical Footprint: Designator=S1 Old Footprint=SWITCH New Footprint=SWITCH
+Change Physical Footprint: Designator=U1 Old Footprint=ESP32C3SUPERMINI New Footprint=ESP32C3SUPERMINI
+Change Physical Footprint: Designator=U2 Old Footprint=TB6612FNG New Footprint=TB6612FNG
+Change Physical Footprint: Designator=U3 Old Footprint=BMS_2S_20A_HW391 New Footprint=BMS_2S_20A_HW391
+Change Physical Footprint: Designator=U4 Old Footprint=CARGADOR_2S_USBC New Footprint=CARGADOR_2S_USBC
+Change Physical Footprint: Designator=U5 Old Footprint=XL4005_MODULE New Footprint=XL4005_MODULE

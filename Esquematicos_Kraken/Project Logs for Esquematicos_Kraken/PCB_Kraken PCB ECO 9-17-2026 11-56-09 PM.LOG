@@ -1,0 +1,11 @@
+Added Member To Class: ClassName=Power Member=Component BT1 Header 2
+Added Member To Class: ClassName=Power Member=Component BT2 Header 2
+Added Member To Class: ClassName=Motor driver Member=Component C1 Cap Pol1
+Added Member To Class: ClassName=Motor driver Member=Component Motor1 Header 2
+Added Member To Class: ClassName=Motor driver Member=Component Motor2 Header 2
+Added Member To Class: ClassName=Power Member=Component S1 SW-SPST
+Added Member To Class: ClassName=MCU BLE Member=Component U1 ESP32-C3 SUPERMINI
+Added Member To Class: ClassName=Motor driver Member=Component U2 TB6612FNG devkit v1.0
+Added Member To Class: ClassName=Power Member=Component U3 BMS 2S 20A
+Added Member To Class: ClassName=Power Member=Component U4 CARGADOR 2S USB-C
+Added Member To Class: ClassName=Power Member=Component U5 v1

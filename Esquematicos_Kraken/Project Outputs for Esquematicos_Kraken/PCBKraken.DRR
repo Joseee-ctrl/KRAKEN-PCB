@@ -1,0 +1,17 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: PCBKraken.PcbDoc   9/26/2026  7:21:51 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII Plated RoundHoles File : PCBKraken-Plated.TXT
+ASCII Non-Plated RoundHoles File : PCBKraken-NonPlated.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      1mm (39mil)                                               Round             34        PTH        128.87mm (5.07inch)
+T2      1.5mm (59mil)                                             Round             21        PTH        276.27mm (10.88inch)
+T3      3mm (118mil)                                              Round             4         NPTH       265.00mm (10.43inch)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              59
+
+Total Processing Time (hh:mm:ss) : 00:00:00

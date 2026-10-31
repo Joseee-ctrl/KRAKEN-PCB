@@ -1,0 +1,28 @@
+Added Component: Designator=U3(BMS_2S_20A_HW391)
+Added Component: Designator=U4(CARGADOR_2S_USBC)
+Add Pin To Net: Unknown Pin: Pin U2-1
+Add Pin To Net: Unknown Pin: Pin U2-2
+Add Pin To Net: Unknown Pin: Pin U2-3
+Add Pin To Net: Unknown Pin: Pin U2-4
+Add Pin To Net: Unknown Pin: Pin U2-5
+Add Pin To Net: Unknown Pin: Pin U2-6
+Add Pin To Net: Unknown Pin: Pin U2-7
+Add Pin To Net: Unknown Pin: Pin U2-8
+Add Pin To Net: Unknown Pin: Pin U2-9
+Add Pin To Net: Unknown Pin: Pin U2-10
+Add Pin To Net: Unknown Pin: Pin U2-11
+Add Pin To Net: Unknown Pin: Pin U2-12
+Add Pin To Net: Unknown Pin: Pin U2-13
+Add Pin To Net: Unknown Pin: Pin U2-14
+Add Pin To Net: Unknown Pin: Pin U2-15
+Add Pin To Net: Unknown Pin: Pin U2-16
+Added Pin To Net: NetName=NetBT1_2 Pin=U3-1
+Added Pin To Net: NetName=NetBT1_1 Pin=U3-2
+Added Pin To Net: NetName=NetBT2_1 Pin=U3-3
+Added Pin To Net: NetName=NetU3_4 Pin=U3-4
+Added Pin To Net: NetName=NetS1_1 Pin=U3-5
+Added Pin To Net: NetName=NetS1_1 Pin=U4-3
+Added Pin To Net: NetName=NetU3_4 Pin=U4-4
+Add Class Member: Failed to add class member : Component U2 TB6612FNG devkit v1.0
+Added Member To Class: ClassName=Power Member=Component U3 BMS 2S 20A
+Added Member To Class: ClassName=Power Member=Component U4 CARGADOR 2S USB-C
